@@ -22,9 +22,15 @@ export default function TerminalContact() {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
+  const isInitialMount = useRef(true);
+
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     if (step !== 'confirm' && step !== 'done') {
-      inputRef.current?.focus();
+      inputRef.current?.focus({ preventScroll: true });
     }
   }, [step]);
 
@@ -143,7 +149,7 @@ export default function TerminalContact() {
           <div
             ref={terminalRef}
             className="bg-[#1C1C2E] min-h-[300px] max-h-[500px] overflow-y-auto p-6 font-mono text-sm leading-relaxed cursor-text"
-            onClick={() => { if (step !== 'confirm' && step !== 'done') inputRef.current?.focus(); }}
+            onClick={() => { if (step !== 'confirm' && step !== 'done') inputRef.current?.focus({ preventScroll: true }); }}
           >
             {/* Rendered History Lines */}
             {lines.map((line, i) => {

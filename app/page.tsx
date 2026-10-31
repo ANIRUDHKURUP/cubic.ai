@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Ticker from '@/components/Ticker';
@@ -15,6 +15,15 @@ import ContactModal from '@/components/ContactModal';
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('Websites and web apps');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   const handleOpenContact = (service?: string) => {
     if (service) {
