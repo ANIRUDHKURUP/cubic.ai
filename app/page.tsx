@@ -7,7 +7,6 @@ import Ticker from '@/components/Ticker';
 import Services from '@/components/Services';
 import AgenticAI from '@/components/AgenticAI';
 import Process from '@/components/Process';
-import FinalCTA from '@/components/FinalCTA';
 import TerminalContact from '@/components/TerminalContact';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -56,10 +55,7 @@ export default function Home() {
       {/* 5. Horizontal Pinned Process Section */}
       <Process />
 
-      {/* 6. Final High-Impact CTA */}
-      <FinalCTA onOpenContact={handleOpenContact} />
-
-      {/* 8. Terminal Contact Form */}
+      {/* 6. Terminal Contact Form */}
       <TerminalContact />
 
       {/* 9. Multi-Column Engineering Footer */}
